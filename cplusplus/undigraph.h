@@ -5,6 +5,10 @@
 #ifndef CPLUSPLUS_UNDIGRAPH_H
 #define CPLUSPLUS_UNDIGRAPH_H
 
+#include <iostream>
+#include "common_iostream.h"
+#include "graph.h"
+
 /**
  * 无向图，实现操作如下：
  * 1. 图数据载入
@@ -13,7 +17,10 @@
  */
 class Undigraph {
 
+public:
+    void CreateMGraph(MGraph *G);
 
+    void printMGraph(MGraph G);
 
 };
 

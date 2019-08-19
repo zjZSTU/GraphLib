@@ -8,5 +8,5 @@ find_package(OpenCV REQUIRED)
 MESSAGE("OpenCV version: ${OpenCV_VERSION}")
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(cplusplus main.cpp Undigraph.cpp Undigraph.h graph.h)
+add_executable(cplusplus main.cpp undigraph.cpp undigraph.h graph.h common_iostream.h)
 target_link_libraries(cplusplus ${OpenCV_LIBS})

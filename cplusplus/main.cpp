@@ -1,12 +1,12 @@
 #include <iostream>
-#include <opencv2/opencv.hpp>
+#include "common_iostream.h"
+#include "undigraph.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    Undigraph graph;
 
-    cv::Mat img = cv::imread("../lena.jpg");
-    cv::imshow("lena", img);
-    cv::waitKey(0);
+    MGraph G;
+    graph.CreateMGraph(&G);
 
     return 0;
 }
