@@ -36,5 +36,12 @@ int main() {
     }
     cout << endl;
 
+    cout << "邻接矩阵 - 广度优先遍历" << endl;
+    idxes = graph.BFSTraverse(G);
+    for (i = 0; i < G.numVertexes; i++) {
+        cout << G.vexs[idxes[i]] << " ";
+    }
+    cout << endl;
+
     return 0;
 }

@@ -91,3 +91,44 @@ void Undigraph::DFS(MGraph G, int up, int *index) {
         }
     }
 }
+
+int *Undigraph::BFSTraverse(MGraph G) {
+    int i, j, k;
+    int index = 0;
+    std::queue<int> q;
+    for (i = 0; i < G.numVertexes; i++) {
+        visited[i] = false;
+    }
+
+    for (i = 0; i < G.numVertexes; i++) {
+        if (!visited[i]) {
+            // 访问顶点i
+            visited[i] = true;
+            ordered[index] = i;
+//            cout << " " << G.vexs[i];
+            index++;
+
+            q.push(i);
+            while (!q.empty()) {
+                // 出队
+                k = q.front();
+                q.pop();
+
+                // 遍历邻接矩阵
+                for (j = 0; j < G.numVertexes; j++) {
+                    if (k != j and G.arcs[k][j] != GINFINITY and !visited[j]) {
+                        // 访问顶点k
+                        visited[j] = true;
+                        ordered[index] = j;
+//                        cout << " " << G.vexs[j];
+                        index++;
+
+                        q.push(j);
+                    }
+                }
+            }
+        }
+    }
+
+    return ordered;
+}

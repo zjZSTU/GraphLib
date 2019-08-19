@@ -7,6 +7,7 @@
 
 #include <iomanip>
 #include <iostream>
+#include <queue>
 #include "common_iostream.h"
 #include "graph.h"
 
@@ -24,6 +25,8 @@ public:
     void PrintMGraph(MGraph G);
 
     int *DFSTraverse(MGraph G);
+
+    int *BFSTraverse(MGraph G);
 
 private:
 
