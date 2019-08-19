@@ -48,10 +48,46 @@ void Undigraph::PrintMGraph(MGraph G) {
     cout << "边集信息: " << endl;
     for (int i = 0; i < G.numVertexes; i++) {
         for (int j = 0; j < G.numVertexes; j++) {
-            cout << " " << G.arcs[i][j];
+            if (G.arcs[i][j] == GINFINITY) {
+                cout.width(4);          // 设置显示域宽10
+                cout << "--";
+            } else {
+                cout.width(4);          // 设置显示域宽10
+                cout << G.arcs[i][j];
+            }
         }
         cout << endl;
     }
     cout << endl;
 
+}
+
+int *Undigraph::DFSTraverse(MGraph G) {
+    int i;
+    for (i = 0; i < G.numVertexes; i++) {
+        visited[i] = false;
+    }
+
+    int index = 0;
+    for (i = 0; i < G.numVertexes; i++) {
+        if (!visited[i]) {
+            DFS(G, i, &index);
+        }
+    }
+
+    return ordered;
+}
+
+void Undigraph::DFS(MGraph G, int up, int *index) {
+    int j;
+    // 访问顶点up
+    visited[up] = true;
+    ordered[*index] = up;
+    *index += 1;
+
+    for (j = 0; j < G.numVertexes; j++) {
+        if (up != j and G.arcs[up][j] != GINFINITY and !visited[j]) {
+            DFS(G, j, index);
+        }
+    }
 }

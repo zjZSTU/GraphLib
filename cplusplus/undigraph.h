@@ -5,6 +5,7 @@
 #ifndef CPLUSPLUS_UNDIGRAPH_H
 #define CPLUSPLUS_UNDIGRAPH_H
 
+#include <iomanip>
 #include <iostream>
 #include "common_iostream.h"
 #include "graph.h"
@@ -21,6 +22,15 @@ public:
     void CreateMGraph(MGraph *G);
 
     void PrintMGraph(MGraph G);
+
+    int *DFSTraverse(MGraph G);
+
+private:
+
+    void DFS(MGraph G, int up, int *index);
+
+    bool visited[MAXVEX];
+    int ordered[MAXVEX];
 };
 
 
