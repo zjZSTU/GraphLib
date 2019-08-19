@@ -36,7 +36,7 @@ void Undigraph::CreateMGraph(MGraph *G) {
     }
 }
 
-void Undigraph::printMGraph(MGraph G) {
+void Undigraph::PrintMGraph(MGraph G) {
     cout << "顶点数和边数: ";
     cout << G.numVertexes << " " << G.numEdges << endl;
     cout << "顶点信息: " << endl;

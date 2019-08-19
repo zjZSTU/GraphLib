@@ -7,6 +7,7 @@ int main() {
 
     MGraph G;
     graph.CreateMGraph(&G);
+    graph.PrintMGraph(G);
 
     return 0;
 }

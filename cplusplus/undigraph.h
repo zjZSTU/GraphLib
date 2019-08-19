@@ -20,8 +20,7 @@ class Undigraph {
 public:
     void CreateMGraph(MGraph *G);
 
-    void printMGraph(MGraph G);
-
+    void PrintMGraph(MGraph G);
 };
 
 
