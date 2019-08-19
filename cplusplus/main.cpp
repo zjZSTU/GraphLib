@@ -43,5 +43,9 @@ int main() {
     }
     cout << endl;
 
+    cout << "邻接矩阵 - 最小生成树 - Prim" << endl;
+    graph.MiniSpanTree_Prim(G);
+    cout << endl;
+
     return 0;
 }

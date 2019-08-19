@@ -28,6 +28,8 @@ public:
 
     int *BFSTraverse(MGraph G);
 
+    void MiniSpanTree_Prim(MGraph G);
+
 private:
 
     void DFS(MGraph G, int up, int *index);
