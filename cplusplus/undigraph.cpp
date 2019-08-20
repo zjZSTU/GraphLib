@@ -135,8 +135,8 @@ int *Undigraph::BFSTraverse(MGraph G) {
 
 void Undigraph::MiniSpanTree_Prim(MGraph G) {
     int min, i, j, k;
-    int adjvex[MAXVEX];
-    int lowcost[MAXVEX];
+    std::array<int, MAXVEX> adjvex = {};
+    std::array<int, MAXVEX> lowcost = {};
 
     // 默认添加顶点0到MST
     // adjvex赋值为边的另一个顶点值， 如果顶点已在MST中，指定下标赋值为-1
@@ -177,4 +177,60 @@ void Undigraph::MiniSpanTree_Prim(MGraph G) {
             }
         }
     }
+}
+
+void Undigraph::MiniSpanTree_Kruskal(MGraph G) {
+    int i, j, k, n, m;
+    std::array<Edge, MAXEDGE> edges = {};
+    // 保存最小生成树，数组下标表示一个顶点，赋值表示另一个顶点
+    int parent[MAXVEX];
+
+    // 将边集赋值给edges
+    k = 0;
+    for (i = 0; i < G.numVertexes; i++) {
+        for (j = i + 1; j < G.numVertexes; j++) {
+            if (G.arcs[i][j] != GINFINITY) {
+                Edge edge;
+                edge.begin = i;
+                edge.end = j;
+                edge.weight = G.arcs[i][j];
+
+                edges[k] = edge;
+                k++;
+            }
+        }
+    }
+    // 按权值升序排序
+    std::sort(edges.begin(), edges.begin() + G.numEdges, less_second);
+//    for (i = 0; i < G.numEdges; i++) {
+//        printf("(%d, %d) %d\n", edges[i].begin, edges[i].end, edges[i].weight);
+//    }
+
+    // 初始化
+    for (i = 0; i < G.numVertexes; i++) {
+        parent[i] = 0;
+    }
+    // 升序遍历
+    for (i = 0; i < G.numEdges; i++) {
+        n = Find(parent, edges[i].begin);
+        m = Find(parent, edges[i].end);
+        // 判断两个分量是否同属一个
+        if (n != m) {
+            parent[n] = m;
+            printf("(%d, %d) %d\n", edges[i].begin, edges[i].end, edges[i].weight);
+        }
+    }
+}
+
+bool Undigraph::less_second(Edge x, Edge y) {
+    return x.weight < y.weight;
+}
+
+int Undigraph::Find(int *parent, int f) {
+    // 遍历分量
+    while (parent[f] > 0) {
+        f = parent[f];
+    }
+
+    return f;
 }

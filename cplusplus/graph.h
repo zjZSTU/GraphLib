@@ -25,7 +25,14 @@ typedef std::string VertexType;
 // 边权值类型
 typedef int EdgeType;
 
+// 权值边存储结构
+typedef struct {
+    int begin;
+    int end;
+    int weight;
+} Edge;
 
+// 邻接矩阵存储结构
 typedef struct {
     // 顶点表
     std::array<VertexType, MAXVEX> vexs;

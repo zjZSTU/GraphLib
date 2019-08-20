@@ -13,7 +13,7 @@ int main() {
             {10,        0,         18,        GINFINITY, GINFINITY, GINFINITY, 16,        GINFINITY, 12},
             {GINFINITY, 18,        0,         22,        GINFINITY, GINFINITY, GINFINITY, GINFINITY, 8},
             {GINFINITY, GINFINITY, 22,        0,         20,        GINFINITY, 24,        16,        21},
-            {GINFINITY, GINFINITY, GINFINITY, 20,        0,         26,        GINFINITY, 7,         9},
+            {GINFINITY, GINFINITY, GINFINITY, 20,        0,         26,        GINFINITY, 7,         GINFINITY},
             {11,        GINFINITY, GINFINITY, GINFINITY, 26,        0,         17,        GINFINITY, GINFINITY},
             {GINFINITY, 16,        GINFINITY, 24,        GINFINITY, 17,        0,         19,        GINFINITY},
             {GINFINITY, GINFINITY, GINFINITY, 16,        7,         GINFINITY, 19,        0,         GINFINITY},
@@ -45,6 +45,10 @@ int main() {
 
     cout << "邻接矩阵 - 最小生成树 - Prim" << endl;
     graph.MiniSpanTree_Prim(G);
+    cout << endl;
+
+    cout << "邻接矩阵 - 最小生成树 - Kruskal" << endl;
+    graph.MiniSpanTree_Kruskal(G);
     cout << endl;
 
     return 0;
