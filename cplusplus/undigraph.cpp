@@ -223,7 +223,7 @@ int *Undigraph::BFSTraverse(MGraph G) {
 }
 
 int *Undigraph::BFSTraverse(GraphAdjList G) {
-    int i, j, k;
+    int i, k;
     EdgeNode *e;
     int index = 0;
     std::queue<int> q;
