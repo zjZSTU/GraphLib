@@ -31,6 +31,8 @@ public:
 
     int *DFSTraverse(MGraph G);
 
+    int *DFSTraverse(GraphAdjList G);
+
     int *BFSTraverse(MGraph G);
 
     void MiniSpanTree_Prim(MGraph G);
@@ -40,6 +42,8 @@ public:
 private:
 
     void DFS(MGraph G, int up, int *index);
+
+    void DFS(GraphAdjList G, int up, int *index);
 
     static bool less_second(Edge x, Edge y);
 

@@ -136,6 +136,22 @@ int *Undigraph::DFSTraverse(MGraph G) {
     return ordered;
 }
 
+int *Undigraph::DFSTraverse(GraphAdjList G) {
+    int i;
+    for (i = 0; i < G.numVertexes; i++) {
+        visited[i] = false;
+    }
+
+    int index = 0;
+    for (i = 0; i < G.numVertexes; i++) {
+        if (!visited[i]) {
+            DFS(G, i, &index);
+        }
+    }
+
+    return ordered;
+}
+
 void Undigraph::DFS(MGraph G, int up, int *index) {
     int j;
     // 访问顶点up
@@ -147,6 +163,21 @@ void Undigraph::DFS(MGraph G, int up, int *index) {
         if (up != j and G.arcs[up][j] != GINFINITY and !visited[j]) {
             DFS(G, j, index);
         }
+    }
+}
+
+void Undigraph::DFS(GraphAdjList G, int up, int *index) {
+    // 访问顶点up
+    visited[up] = true;
+    ordered[*index] = up;
+    *index += 1;
+
+    EdgeNode *e = G.adjList[up].firstEdge;
+    while (e != nullptr) {
+        if (!visited[e->adjvex]) {
+            DFS(G, e->adjvex, index);
+        }
+        e = e->next;
     }
 }
 
