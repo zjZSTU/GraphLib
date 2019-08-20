@@ -35,6 +35,8 @@ public:
 
     int *BFSTraverse(MGraph G);
 
+    int *BFSTraverse(GraphAdjList G);
+
     void MiniSpanTree_Prim(MGraph G);
 
     void MiniSpanTree_Kruskal(MGraph G);

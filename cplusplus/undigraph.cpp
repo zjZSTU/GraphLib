@@ -222,6 +222,47 @@ int *Undigraph::BFSTraverse(MGraph G) {
     return ordered;
 }
 
+int *Undigraph::BFSTraverse(GraphAdjList G) {
+    int i, j, k;
+    EdgeNode *e;
+    int index = 0;
+    std::queue<int> q;
+    for (i = 0; i < G.numVertexes; i++) {
+        visited[i] = false;
+    }
+
+    for (i = 0; i < G.numVertexes; i++) {
+        if (!visited[i]) {
+            // 访问顶点i
+            visited[i] = true;
+            ordered[index] = i;
+            index++;
+
+            q.push(i);
+            while (!q.empty()) {
+                // 出队
+                k = q.front();
+                q.pop();
+
+                e = G.adjList[k].firstEdge;
+                while (e != nullptr) {
+                    if (!visited[e->adjvex]) {
+                        // 访问顶点adjvex
+                        visited[e->adjvex] = true;
+                        ordered[index] = e->adjvex;
+                        index++;
+
+                        q.push(e->adjvex);
+                    }
+                    e = e->next;
+                }
+            }
+        }
+    }
+
+    return ordered;
+}
+
 void Undigraph::MiniSpanTree_Prim(MGraph G) {
     int min, i, j, k;
     std::array<int, MAXVEX> adjvex = {};
