@@ -43,6 +43,10 @@
 
 * zhujian - *初始工作* - [zjZSTU](https://github.com/zjZSTU)
 
+## 更改日志
+
+请参阅仓库中的[CHNAGELOG](./CHNAGELOG)
+
 ## 协议
 
 本工程基于`Apache v2.0`协议 - 具体协议内容参考`LICENSE`文件

@@ -44,6 +44,10 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 * zhujian - *Initial work* - [zjZSTU](https://github.com/zjZSTU)
 
+## CHANGELOG
+
+see the [CHNAGELOG](./CHNAGELOG) on this repository.
+
 ## License
 
 This project is licensed under the Apache License v2.0 - see the LICENSE file for details
