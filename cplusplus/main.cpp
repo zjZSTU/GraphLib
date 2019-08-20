@@ -3,22 +3,32 @@
 #include "common_iostream.h"
 #include "undigraph.h"
 
+std::array<VertexType, 9> vertexes = {"v0",
+                                      "v1",
+                                      "v2",
+                                      "v3",
+                                      "v4",
+                                      "v5",
+                                      "v6",
+                                      "v7",
+                                      "v8"};
+EdgeType arcs[9][9] = {
+        {0,         10,        GINFINITY, GINFINITY, GINFINITY, 11,        GINFINITY, GINFINITY, GINFINITY},
+        {10,        0,         18,        GINFINITY, GINFINITY, GINFINITY, 16,        GINFINITY, 12},
+        {GINFINITY, 18,        0,         22,        GINFINITY, GINFINITY, GINFINITY, GINFINITY, 8},
+        {GINFINITY, GINFINITY, 22,        0,         20,        GINFINITY, 24,        16,        21},
+        {GINFINITY, GINFINITY, GINFINITY, 20,        0,         26,        GINFINITY, 7,         GINFINITY},
+        {11,        GINFINITY, GINFINITY, GINFINITY, 26,        0,         17,        GINFINITY, GINFINITY},
+        {GINFINITY, 16,        GINFINITY, 24,        GINFINITY, 17,        0,         19,        GINFINITY},
+        {GINFINITY, GINFINITY, GINFINITY, 16,        7,         GINFINITY, 19,        0,         GINFINITY},
+        {GINFINITY, 12,        8,         21,        GINFINITY, GINFINITY, GINFINITY, GINFINITY, 0}
+};
+
 void MGraphUse() {
     MGraph G;
     G.numVertexes = 9;
     G.numEdges = 15;
     G.vexs = {"v0", "v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8"};
-    EdgeType arcs[9][9] = {
-            {0,         10,        GINFINITY, GINFINITY, GINFINITY, 11,        GINFINITY, GINFINITY, GINFINITY},
-            {10,        0,         18,        GINFINITY, GINFINITY, GINFINITY, 16,        GINFINITY, 12},
-            {GINFINITY, 18,        0,         22,        GINFINITY, GINFINITY, GINFINITY, GINFINITY, 8},
-            {GINFINITY, GINFINITY, 22,        0,         20,        GINFINITY, 24,        16,        21},
-            {GINFINITY, GINFINITY, GINFINITY, 20,        0,         26,        GINFINITY, 7,         GINFINITY},
-            {11,        GINFINITY, GINFINITY, GINFINITY, 26,        0,         17,        GINFINITY, GINFINITY},
-            {GINFINITY, 16,        GINFINITY, 24,        GINFINITY, 17,        0,         19,        GINFINITY},
-            {GINFINITY, GINFINITY, GINFINITY, 16,        7,         GINFINITY, 19,        0,         GINFINITY},
-            {GINFINITY, 12,        8,         21,        GINFINITY, GINFINITY, GINFINITY, GINFINITY, 0}
-    };
     int i = 0;
     for (auto &ary:G.arcs) {
         memcpy(&ary, arcs[i], sizeof(EdgeType) * 9);
@@ -52,38 +62,20 @@ void MGraphUse() {
     cout << endl;
 }
 
-int main() {
+void GraphAdjListUse() {
     GraphAdjList G;
     G.numVertexes = 9;
     G.numEdges = 15;
-    VertexType vertexes[9] = {"v0",
-                              "v1",
-                              "v2",
-                              "v3",
-                              "v4",
-                              "v5",
-                              "v6",
-                              "v7",
-                              "v8"};
-    EdgeType arcs[9][9] = {
-            {0,         10,        GINFINITY, GINFINITY, GINFINITY, 11,        GINFINITY, GINFINITY, GINFINITY},
-            {10,        0,         18,        GINFINITY, GINFINITY, GINFINITY, 16,        GINFINITY, 12},
-            {GINFINITY, 18,        0,         22,        GINFINITY, GINFINITY, GINFINITY, GINFINITY, 8},
-            {GINFINITY, GINFINITY, 22,        0,         20,        GINFINITY, 24,        16,        21},
-            {GINFINITY, GINFINITY, GINFINITY, 20,        0,         26,        GINFINITY, 7,         GINFINITY},
-            {11,        GINFINITY, GINFINITY, GINFINITY, 26,        0,         17,        GINFINITY, GINFINITY},
-            {GINFINITY, 16,        GINFINITY, 24,        GINFINITY, 17,        0,         19,        GINFINITY},
-            {GINFINITY, GINFINITY, GINFINITY, 16,        7,         GINFINITY, 19,        0,         GINFINITY},
-            {GINFINITY, 12,        8,         21,        GINFINITY, GINFINITY, GINFINITY, GINFINITY, 0}
-    };
+
     int i, j;
+    EdgeNode *edgeNode;
     for (i = 0; i < 9; i++) {
         VertextNode vertextNode;
         vertextNode.data = vertexes[i];
         vertextNode.firstEdge = nullptr;
         for (j = 0; j < 9; j++) {
             if (i != j and arcs[i][j] != GINFINITY) {
-                EdgeNode *edgeNode = (EdgeNode *) malloc(sizeof(EdgeNode));
+                edgeNode = (EdgeNode *) malloc(sizeof(EdgeNode));
                 edgeNode->adjvex = j;
                 edgeNode->weight = arcs[i][j];
                 edgeNode->next = vertextNode.firstEdge;
@@ -118,6 +110,11 @@ int main() {
     cout << "邻接表 - 最小生成树 - Kruskal" << endl;
     graph.MiniSpanTree_Kruskal(G);
     cout << endl;
+}
+
+int main() {
+//    MGraphUse();
+    GraphAdjListUse();
 
     return 0;
 }
