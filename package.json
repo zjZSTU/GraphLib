@@ -1,0 +1,31 @@
+{
+  "name": "graph_algorithm",
+  "version": "1.0.0",
+  "description": "[中文版本（Chinese version）](./README.zh-CN.md)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zjZSTU/graph_algorithm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zjZSTU/graph_algorithm/issues"
+  },
+  "homepage": "https://github.com/zjZSTU/graph_algorithm#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.0.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "scripts": {
+    "cl": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+  }
+}
