@@ -43,6 +43,8 @@ public:
 
     void MiniSpanTree_Kruskal(MGraph G);
 
+    void MiniSpanTree_Kruskal(GraphAdjList G);
+
 private:
 
     void DFS(MGraph G, int up, int *index);

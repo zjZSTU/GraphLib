@@ -411,6 +411,52 @@ void Undigraph::MiniSpanTree_Kruskal(MGraph G) {
     }
 }
 
+void Undigraph::MiniSpanTree_Kruskal(GraphAdjList G) {
+    int i, j, k, n, m;
+    EdgeNode *e;
+    std::array<Edge, MAXEDGE> edges = {};
+    // 保存最小生成树，数组下标表示一个顶点，赋值表示另一个顶点
+    int parent[MAXVEX];
+
+    // 将边集赋值给edges
+    k = 0;
+    for (i = 0; i < G.numVertexes; i++) {
+        e = G.adjList[i].firstEdge;
+
+        while (e != nullptr) {
+            Edge edge;
+            edge.begin = i;
+            edge.end = e->adjvex;
+            edge.weight = e->weight;
+
+            edges[k] = edge;
+            k++;
+
+            e = e->next;
+        }
+    }
+    // 按权值升序排序
+    std::sort(edges.begin(), edges.begin() + G.numEdges, less_second);
+//    for (i = 0; i < G.numEdges; i++) {
+//        printf("(%d, %d) %d\n", edges[i].begin, edges[i].end, edges[i].weight);
+//    }
+
+    // 初始化
+    for (i = 0; i < G.numVertexes; i++) {
+        parent[i] = 0;
+    }
+    // 升序遍历
+    for (i = 0; i < G.numEdges; i++) {
+        n = Find(parent, edges[i].begin);
+        m = Find(parent, edges[i].end);
+        // 判断两个分量是否同属一个
+        if (n != m) {
+            parent[n] = m;
+            printf("(%d, %d) %d\n", edges[i].begin, edges[i].end, edges[i].weight);
+        }
+    }
+}
+
 bool Undigraph::less_second(Edge x, Edge y) {
     return x.weight < y.weight;
 }
