@@ -309,6 +309,65 @@ void Undigraph::MiniSpanTree_Prim(MGraph G) {
     }
 }
 
+void Undigraph::MiniSpanTree_Prim(GraphAdjList G) {
+    int min, i, j, k;
+    EdgeNode *e;
+    std::array<int, MAXVEX> adjvex = {};
+    std::array<int, MAXVEX> lowcost = {};
+
+    // 初始化
+    for (i = 0; i < G.numVertexes; i++) {
+        lowcost[i] = GINFINITY;
+        adjvex[i] = 0;
+    }
+
+    // 默认添加顶点0到MST
+    // adjvex赋值为边的另一个顶点值， 如果顶点已在MST中，指定下标赋值为-1
+    adjvex[0] = 0;
+    lowcost[0] = -1;
+    e = G.adjList[0].firstEdge;
+    while (e != nullptr) {
+        lowcost[e->adjvex] = e->weight;
+        adjvex[e->adjvex] = 0;
+
+        e = e->next;
+    }
+
+//    int index = 0;
+    // 遍历n-1轮，得到另外的顶点
+    for (i = 1; i < G.numVertexes; i++) {
+        min = GINFINITY;
+        // 遍历n-1次，搜索最小权值边
+        j = 1, k = 0;
+        while (j < G.numVertexes) {
+            if (lowcost[j] != -1 and lowcost[j] < min) {
+                min = lowcost[j];
+                k = j;
+            }
+            j++;
+        }
+
+        // 输出最小权值边
+        printf("(%d, %d)", adjvex[k], k);
+//        arrs[index][0] = adjvex[k];
+//        arrs[index][1] = k;
+//        index++;
+        // 顶点k已加入MST，lowcost赋值为-1
+        lowcost[k] = -1;
+
+        // 比较顶点k的边集和MST的最小权值边集
+        e = G.adjList[k].firstEdge;
+        while (e != nullptr) {
+            if (lowcost[e->adjvex] != -1 and e->weight < lowcost[e->adjvex]) {
+                lowcost[e->adjvex] = e->weight;
+                adjvex[e->adjvex] = k;
+            }
+
+            e = e->next;
+        }
+    }
+}
+
 void Undigraph::MiniSpanTree_Kruskal(MGraph G) {
     int i, j, k, n, m;
     std::array<Edge, MAXEDGE> edges = {};
