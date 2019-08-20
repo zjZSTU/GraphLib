@@ -45,7 +45,7 @@
 
 ## 更改日志
 
-请参阅仓库中的[CHNAGELOG](./CHNAGELOG)
+请参阅仓库中的[CHNAGELOG](./CHNAGELOG.md)
 
 ## 协议
 

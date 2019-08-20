@@ -46,7 +46,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## CHANGELOG
 
-see the [CHNAGELOG](./CHNAGELOG) on this repository.
+see the [CHNAGELOG](./CHNAGELOG.md) on this repository.
 
 ## License
 
