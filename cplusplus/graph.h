@@ -41,4 +41,27 @@ typedef struct {
     int numVertexes, numEdges;
 } MGraph;
 
+// 边表结点
+typedef struct EdgeNode {
+    // 邻接点域，存储该顶点对应的坐标
+    int adjvex;
+    // 存储权值
+    EdgeType weight;
+    struct EdgeNode *next;
+} EdgeNode;
+
+// 顶点表结点
+typedef struct VertexNode {
+    VertexType data;
+    EdgeNode *firstEdge;
+} VertextNode;
+
+// 邻接表
+typedef struct {
+    // 顶点集数组
+    std::array<VertextNode, MAXVEX> adjList;
+    // 顶点集和边集大小
+    int numVertexes, numEdges;
+} GraphAdjList;
+
 #endif //CPLUSPLUS_GRAPH_H

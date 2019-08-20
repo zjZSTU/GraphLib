@@ -3,7 +3,7 @@
 #include "common_iostream.h"
 #include "undigraph.h"
 
-int main() {
+void MGraphUse() {
     MGraph G;
     G.numVertexes = 9;
     G.numEdges = 15;
@@ -50,6 +50,14 @@ int main() {
     cout << "邻接矩阵 - 最小生成树 - Kruskal" << endl;
     graph.MiniSpanTree_Kruskal(G);
     cout << endl;
+}
+
+int main() {
+    Undigraph graph;
+
+    GraphAdjList adjList;
+    graph.CreateGraphAdjList(&adjList);
+    graph.PrintGraphAdjList(adjList);
 
     return 0;
 }

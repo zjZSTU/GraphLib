@@ -23,7 +23,11 @@ class Undigraph {
 public:
     void CreateMGraph(MGraph *G);
 
+    void CreateGraphAdjList(GraphAdjList *G);
+
     void PrintMGraph(MGraph G);
+
+    void PrintGraphAdjList(GraphAdjList G);
 
     int *DFSTraverse(MGraph G);
 

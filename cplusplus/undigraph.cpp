@@ -36,6 +36,43 @@ void Undigraph::CreateMGraph(MGraph *G) {
     }
 }
 
+void Undigraph::CreateGraphAdjList(GraphAdjList *G) {
+    int i, j, k, w;
+    EdgeNode *e;
+
+    cout << "输入顶点数: ";
+    cin >> G->numVertexes;
+    cout << "输入边集数: ";
+    cin >> G->numEdges;
+
+    cout << "输入顶点信息：" << endl;
+    for (i = 0; i < G->numVertexes; i++) {
+        cin >> G->adjList[i].data;
+        G->adjList[i].firstEdge = nullptr;
+    }
+
+    cout << "输入边信息" << endl;
+    for (k = 0; k < G->numEdges; k++) {
+        cout << "输入第" << k << "条边的上标、下标和权值: ";
+        cin >> i >> j >> w;
+        // 申请内存空间
+        e = (EdgeNode *) malloc(sizeof(EdgeNode));
+        e->adjvex = j;
+        e->weight = w;
+        // 头插法
+        e->next = G->adjList[i].firstEdge;
+        G->adjList[i].firstEdge = e;
+
+        // 无向图的边表对称
+        e = (EdgeNode *) malloc(sizeof(EdgeNode));
+        e->adjvex = i;
+        e->weight = w;
+        // 头插法
+        e->next = G->adjList[j].firstEdge;
+        G->adjList[j].firstEdge = e;
+    }
+}
+
 void Undigraph::PrintMGraph(MGraph G) {
     cout << "顶点数和边数: ";
     cout << G.numVertexes << " " << G.numEdges << endl;
@@ -59,7 +96,28 @@ void Undigraph::PrintMGraph(MGraph G) {
         cout << endl;
     }
     cout << endl;
+}
 
+void Undigraph::PrintGraphAdjList(GraphAdjList G) {
+    cout << "顶点数和边数: ";
+    cout << G.numVertexes << " " << G.numEdges << endl;
+    cout << "顶点信息: " << endl;
+    for (int i = 0; i < G.numVertexes; i++) {
+        cout << " " << G.adjList[i].data;
+    }
+    cout << endl;
+
+    cout << "边集信息: " << endl;
+    EdgeNode *edgeNode;
+    for (int i = 0; i < G.numVertexes; i++) {
+        edgeNode = G.adjList[i].firstEdge;
+        while (edgeNode != nullptr) {
+            printf("(%d, %d) %d ", i, edgeNode->adjvex, edgeNode->weight);
+            edgeNode = edgeNode->next;
+        }
+        cout << endl;
+    }
+    cout << endl;
 }
 
 int *Undigraph::DFSTraverse(MGraph G) {
