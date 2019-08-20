@@ -1,6 +1,3 @@
-# graph_algorithm
-图算法实现，包括存储结构、深度/广度有限遍历、最小生成树创建，基于不同语言（`pyhon/c++`）实现
-
 #  graph_algorithm
 
 [中文版本（Chinese version）](./README.zh-CN.md)
@@ -53,5 +50,4 @@ This project is licensed under the Apache License v2.0 - see the LICENSE file fo
 
 ## Acknowledgments
 
-* [cs231n](http://cs231n.github.io/)
-* [PyTorch](https://pytorch.org/)
+* 《大话数据结构》
