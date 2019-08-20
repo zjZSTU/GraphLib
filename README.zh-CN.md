@@ -1,6 +1,8 @@
 
 # 图算法
 
+[![](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 图算法实现，包括存储结构、深度/广度优先遍历、最小生成树创建，基于不同语言（`pyhon/c++`）实现
 
 ## 功能特性

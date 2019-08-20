@@ -1,5 +1,7 @@
 #  graph_algorithm
 
+[![](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 [中文版本（Chinese version）](./README.zh-CN.md)
 
 Graph algorithm implementation, including storage structure, depth/breadth first traversal, minimum spanning tree creation, based on different languages (pyhon/c++).
