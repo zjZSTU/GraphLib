@@ -43,7 +43,7 @@
 
 ## 版本更新日志
 
-请参阅仓库中的[CHANGELOG](./CHANGELOG)
+请参阅仓库中的[CHANGELOG](./CHANGELOG.md)
 
 # 待办事项
 

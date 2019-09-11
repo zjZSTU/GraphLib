@@ -47,7 +47,7 @@ The **adjacency table** storage structure implementation function (`c++` impleme
 
 ## CHANGELOG
 
-see the [CHANGELOG](./CHANGELOG) on this repository.
+see the [CHANGELOG](./CHANGELOG.md) on this repository.
 
 # TODO
 
