@@ -1,4 +1,4 @@
-#  graph_algorithm
+#  GraphLib
 
 ![](./test_graph.png)
 
