@@ -105,12 +105,11 @@ int *AdjacencyMatrixUndirectedGraph::BFSTraverse(MGraph G) {
             // 访问顶点i
             visited[i] = true;
             ordered[index] = i;
-//            cout << " " << G.vexs[i];
             index++;
 
             q.push(i);
             while (!q.empty()) {
-                // 出队
+                // 获取队头未访问的顶点
                 k = q.front();
                 q.pop();
 
@@ -120,7 +119,6 @@ int *AdjacencyMatrixUndirectedGraph::BFSTraverse(MGraph G) {
                         // 访问顶点k
                         visited[j] = true;
                         ordered[index] = j;
-//                        cout << " " << G.vexs[j];
                         index++;
 
                         q.push(j);
@@ -139,16 +137,16 @@ void AdjacencyMatrixUndirectedGraph::MiniSpanTree_Prim(MGraph G) {
     std::array<int, MAXVEX> adjvex = {};
     std::array<int, MAXVEX> lowcost = {};
 
-    // 默认添加顶点0到MST
+    // 最先添加顶点0到MST中
     // adjvex赋值为边的另一个顶点值， 如果顶点已在MST中，指定下标赋值为-1
-    adjvex[0] = 0;
-    lowcost[0] = -1;
+    int begin_vex = 0;
+    adjvex[begin_vex] = 0;
+    lowcost[begin_vex] = -1;
     for (i = 1; i < G.numVertexes; i++) {
         lowcost[i] = G.arcs[0][i];
         adjvex[i] = 0;
     }
 
-//    int index = 0;
     // 遍历n-1轮，得到另外的顶点
     for (i = 1; i < G.numVertexes; i++) {
         min = GINFINITY;
@@ -163,14 +161,11 @@ void AdjacencyMatrixUndirectedGraph::MiniSpanTree_Prim(MGraph G) {
         }
 
         // 输出最小权值边
-        printf("(%d, %d)", adjvex[k], k);
-//        arrs[index][0] = adjvex[k];
-//        arrs[index][1] = k;
-//        index++;
+        printf("(%d, %d) %d\n", adjvex[k], k, lowcost[k]);
         // 顶点k已加入MST，lowcost赋值为-1
         lowcost[k] = -1;
 
-        // 比较顶点k的边集和MST的最小权值边集
+        // 比较顶点k的边集和MST的最小权值边集，进行替换
         for (j = 1; j < G.numVertexes; j++) {
             if (k != j and lowcost[j] != -1 and G.arcs[k][j] < lowcost[j]) {
                 lowcost[j] = G.arcs[k][j];
@@ -204,7 +199,7 @@ void AdjacencyMatrixUndirectedGraph::MiniSpanTree_Kruskal(MGraph G) {
     // 按权值升序排序
     std::sort(edges.begin(), edges.begin() + G.numEdges, less_second);
 
-    // 升序遍历
+    // 遍历所有边，
     for (i = 0; i < G.numEdges; i++) {
         n = Find(parent, edges[i].begin);
         m = Find(parent, edges[i].end);
