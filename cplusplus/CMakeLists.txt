@@ -8,5 +8,9 @@ find_package(OpenCV REQUIRED)
 MESSAGE("OpenCV version: ${OpenCV_VERSION}")
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(cplusplus main.cpp graph.h common_iostream.h undigraph_test.cpp undigraph_test.h AdjacencyTableUndirectedGraph.cpp AdjacencyTableUndirectedGraph.h)
+add_executable(cplusplus main.cpp graph.h common_iostream.h
+        AdjacencyMatrixUndirectedGraph.cpp
+        AdjacencyMatrixUndirectedGraph.h
+        AdjacencyTableUndirectedGraph.cpp
+        AdjacencyTableUndirectedGraph.h)
 target_link_libraries(cplusplus ${OpenCV_LIBS})
