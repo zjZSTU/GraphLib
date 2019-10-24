@@ -55,7 +55,7 @@ void AdjacencyTableUndirectedGraph::PrintGraphAdjList(GraphAdjList G) {
     for (int i = 0; i < G.numVertexes; i++) {
         edgeNode = G.adjList[i].firstEdge;
         while (edgeNode != nullptr) {
-            printf("(%d, %d) %d ", i, edgeNode->adjvex, edgeNode->weight);
+            printf("(%d, %d) %2d ", i, edgeNode->adjvex, edgeNode->weight);
             edgeNode = edgeNode->next;
         }
         cout << endl;
@@ -174,10 +174,7 @@ void AdjacencyTableUndirectedGraph::MiniSpanTree_Prim(GraphAdjList G) {
         }
 
         // 输出最小权值边
-        printf("(%d, %d)", adjvex[k], k);
-//        arrs[index][0] = adjvex[k];
-//        arrs[index][1] = k;
-//        index++;
+        printf("(%d, %d) %d\n", adjvex[k], k, lowcost[k]);
         // 顶点k已加入MST，lowcost赋值为-1
         lowcost[k] = -1;
 
@@ -220,9 +217,6 @@ void AdjacencyTableUndirectedGraph::MiniSpanTree_Kruskal(GraphAdjList G) {
     }
     // 按权值升序排序
     std::sort(edges.begin(), edges.begin() + G.numEdges, less_second);
-//    for (i = 0; i < G.numEdges; i++) {
-//        printf("(%d, %d) %d\n", edges[i].begin, edges[i].end, edges[i].weight);
-//    }
 
     // 初始化
     for (i = 0; i < G.numVertexes; i++) {

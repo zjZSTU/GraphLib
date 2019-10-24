@@ -18,7 +18,7 @@ EdgeType arcs[NUM][NUM] = {
         {GINFINITY, 12,        8,         21,        GINFINITY, GINFINITY, GINFINITY, GINFINITY, 0}
 };
 
-void GraphAdjListUse(std::array<VertexType, NUM> vertexes, EdgeType (*arcs)[NUM]) {
+void AdjacencyTableTest(std::array<VertexType, NUM> &vertexes, EdgeType (*arcs)[NUM]) {
     GraphAdjList G;
     G.numVertexes = NUM;
     G.numEdges = 15;
@@ -41,8 +41,7 @@ void GraphAdjListUse(std::array<VertexType, NUM> vertexes, EdgeType (*arcs)[NUM]
         G.adjList[i] = vertextNode;
     }
 
-    AdjacencyTableUndirectedGraph graph;
-//    graph.CreateGraphAdjList(&G);
+    AdjacencyTableUndirectedGraph graph{};
     graph.PrintGraphAdjList(G);
 
     cout << "邻接表 - 深度优先遍历" << endl;
@@ -119,7 +118,8 @@ int main() {
                                             "v7",
                                             "v8"};
 
-    AdjacencyMatrixTest(vertexes, arcs);
+//    AdjacencyMatrixTest(vertexes, arcs);
+    AdjacencyTableTest(vertexes, arcs);
 
     return 0;
 }
