@@ -25,11 +25,11 @@ void AdjacencyTableTest(std::array<VertexType, NUM> &vertexes, EdgeType (*arcs)[
 
     int i, j;
     EdgeNode *edgeNode;
-    for (i = 0; i < 9; i++) {
+    for (i = 0; i < NUM; i++) {
         VertextNode vertextNode;
         vertextNode.data = vertexes[i];
         vertextNode.firstEdge = nullptr;
-        for (j = 0; j < 9; j++) {
+        for (j = 0; j < NUM; j++) {
             if (i != j and arcs[i][j] != GINFINITY) {
                 edgeNode = (EdgeNode *) malloc(sizeof(EdgeNode));
                 edgeNode->adjvex = j;
@@ -117,8 +117,8 @@ int main() {
                                             "v7",
                                             "v8"};
 
-    AdjacencyMatrixTest(vertexes, arcs);
-//    AdjacencyTableTest(vertexes, arcs);
+//    AdjacencyMatrixTest(vertexes, arcs);
+    AdjacencyTableTest(vertexes, arcs);
 
     return 0;
 }

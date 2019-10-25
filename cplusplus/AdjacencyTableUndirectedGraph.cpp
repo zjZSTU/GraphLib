@@ -149,9 +149,10 @@ void AdjacencyTableUndirectedGraph::MiniSpanTree_Prim(GraphAdjList G) {
 
     // 默认添加顶点0到MST
     // adjvex赋值为边的另一个顶点值， 如果顶点已在MST中，指定下标赋值为-1
-    adjvex[0] = 0;
-    lowcost[0] = -1;
-    e = G.adjList[0].firstEdge;
+    int begin_index = 0;
+    adjvex[begin_index] = 0;
+    lowcost[begin_index] = -1;
+    e = G.adjList[begin_index].firstEdge;
     while (e != nullptr) {
         lowcost[e->adjvex] = e->weight;
         adjvex[e->adjvex] = 0;
@@ -159,7 +160,7 @@ void AdjacencyTableUndirectedGraph::MiniSpanTree_Prim(GraphAdjList G) {
         e = e->next;
     }
 
-//    int index = 0;
+    int weight = 0;
     // 遍历n-1轮，得到另外的顶点
     for (i = 1; i < G.numVertexes; i++) {
         min = GINFINITY;
@@ -176,6 +177,7 @@ void AdjacencyTableUndirectedGraph::MiniSpanTree_Prim(GraphAdjList G) {
         // 输出最小权值边
         printf("(%d, %d) %d\n", adjvex[k], k, lowcost[k]);
         // 顶点k已加入MST，lowcost赋值为-1
+        weight += lowcost[k];
         lowcost[k] = -1;
 
         // 比较顶点k的边集和MST的最小权值边集
@@ -189,6 +191,7 @@ void AdjacencyTableUndirectedGraph::MiniSpanTree_Prim(GraphAdjList G) {
             e = e->next;
         }
     }
+    cout << "MST权值和为：" << weight << endl;
 }
 
 void AdjacencyTableUndirectedGraph::MiniSpanTree_Kruskal(GraphAdjList G) {
@@ -196,7 +199,7 @@ void AdjacencyTableUndirectedGraph::MiniSpanTree_Kruskal(GraphAdjList G) {
     EdgeNode *e;
     std::array<Edge, MAXEDGE> edges = {};
     // 保存最小生成树，数组下标表示一个顶点，赋值表示另一个顶点
-    int parent[MAXVEX];
+    int parent[MAXVEX] = {};
 
     // 将边集赋值给edges
     k = 0;
@@ -204,13 +207,15 @@ void AdjacencyTableUndirectedGraph::MiniSpanTree_Kruskal(GraphAdjList G) {
         e = G.adjList[i].firstEdge;
 
         while (e != nullptr) {
-            Edge edge;
-            edge.begin = i;
-            edge.end = e->adjvex;
-            edge.weight = e->weight;
+            if (e->adjvex > i) {
+                Edge edge;
+                edge.begin = i;
+                edge.end = e->adjvex;
+                edge.weight = e->weight;
 
-            edges[k] = edge;
-            k++;
+                edges[k] = edge;
+                k++;
+            }
 
             e = e->next;
         }
@@ -218,10 +223,7 @@ void AdjacencyTableUndirectedGraph::MiniSpanTree_Kruskal(GraphAdjList G) {
     // 按权值升序排序
     std::sort(edges.begin(), edges.begin() + G.numEdges, less_second);
 
-    // 初始化
-    for (i = 0; i < G.numVertexes; i++) {
-        parent[i] = 0;
-    }
+    int weight = 0;
     // 升序遍历
     for (i = 0; i < G.numEdges; i++) {
         n = Find(parent, edges[i].begin);
@@ -230,8 +232,10 @@ void AdjacencyTableUndirectedGraph::MiniSpanTree_Kruskal(GraphAdjList G) {
         if (n != m) {
             parent[n] = m;
             printf("(%d, %d) %d\n", edges[i].begin, edges[i].end, edges[i].weight);
+            weight += edges[i].weight;
         }
     }
+    cout << "MST权值和为：" << weight << endl;
 }
 
 bool AdjacencyTableUndirectedGraph::less_second(Edge x, Edge y) {
