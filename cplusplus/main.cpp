@@ -71,7 +71,6 @@ void AdjacencyMatrixTest(std::array<VertexType, NUM> &vertexes, EdgeType (*arcs)
     MGraph G;
     G.numVertexes = NUM;
     G.numEdges = 15;
-    G.vexs = {"v0", "v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8"};
     for (int i = 0; i < NUM; i++) {
         G.vexs[i] = vertexes[i];
     }
@@ -118,8 +117,8 @@ int main() {
                                             "v7",
                                             "v8"};
 
-//    AdjacencyMatrixTest(vertexes, arcs);
-    AdjacencyTableTest(vertexes, arcs);
+    AdjacencyMatrixTest(vertexes, arcs);
+//    AdjacencyTableTest(vertexes, arcs);
 
     return 0;
 }

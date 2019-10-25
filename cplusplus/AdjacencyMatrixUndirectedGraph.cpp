@@ -147,6 +147,7 @@ void AdjacencyMatrixUndirectedGraph::MiniSpanTree_Prim(MGraph G) {
         adjvex[i] = 0;
     }
 
+    int weight = 0;
     // 遍历n-1轮，得到另外的顶点
     for (i = 1; i < G.numVertexes; i++) {
         min = GINFINITY;
@@ -162,6 +163,7 @@ void AdjacencyMatrixUndirectedGraph::MiniSpanTree_Prim(MGraph G) {
 
         // 输出最小权值边
         printf("(%d, %d) %d\n", adjvex[k], k, lowcost[k]);
+        weight += lowcost[k];
         // 顶点k已加入MST，lowcost赋值为-1
         lowcost[k] = -1;
 
@@ -173,6 +175,7 @@ void AdjacencyMatrixUndirectedGraph::MiniSpanTree_Prim(MGraph G) {
             }
         }
     }
+    cout << "最小权值为：" << weight << endl;
 }
 
 void AdjacencyMatrixUndirectedGraph::MiniSpanTree_Kruskal(MGraph G) {
