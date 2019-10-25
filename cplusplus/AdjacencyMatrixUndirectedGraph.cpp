@@ -175,7 +175,7 @@ void AdjacencyMatrixUndirectedGraph::MiniSpanTree_Prim(MGraph G) {
             }
         }
     }
-    cout << "最小权值为：" << weight << endl;
+    cout << "MST权值和为：" << weight << endl;
 }
 
 void AdjacencyMatrixUndirectedGraph::MiniSpanTree_Kruskal(MGraph G) {
@@ -202,6 +202,7 @@ void AdjacencyMatrixUndirectedGraph::MiniSpanTree_Kruskal(MGraph G) {
     // 按权值升序排序
     std::sort(edges.begin(), edges.begin() + G.numEdges, less_second);
 
+    int weight = 0;
     // 遍历所有边，
     for (i = 0; i < G.numEdges; i++) {
         n = Find(parent, edges[i].begin);
@@ -210,8 +211,10 @@ void AdjacencyMatrixUndirectedGraph::MiniSpanTree_Kruskal(MGraph G) {
         if (n != m) {
             parent[n] = m;
             printf("(%d, %d) %d\n", edges[i].begin, edges[i].end, edges[i].weight);
+            weight += edges[i].weight;
         }
     }
+    cout << "MST权值和为：" << weight << endl;
 }
 
 bool AdjacencyMatrixUndirectedGraph::less_second(Edge x, Edge y) {
