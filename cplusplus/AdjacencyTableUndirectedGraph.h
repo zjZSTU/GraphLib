@@ -11,6 +11,7 @@
 #include <queue>
 #include "common_iostream.h"
 #include "graph.h"
+#include "DisjointSet.h"
 
 /**
  * 无向图，实现操作如下：
@@ -37,8 +38,6 @@ private:
     void DFS(GraphAdjList G, int up, int *index);
 
     static bool less_second(Edge x, Edge y);
-
-    int Find(int *parent, int f);
 
     bool visited[MAXVEX];
     int ordered[MAXVEX];

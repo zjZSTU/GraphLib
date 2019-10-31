@@ -12,5 +12,5 @@ add_executable(cplusplus main.cpp graph.h common_iostream.h
         AdjacencyMatrixUndirectedGraph.cpp
         AdjacencyMatrixUndirectedGraph.h
         AdjacencyTableUndirectedGraph.cpp
-        AdjacencyTableUndirectedGraph.h)
+        AdjacencyTableUndirectedGraph.h DisjointSet.cpp DisjointSet.h)
 target_link_libraries(cplusplus ${OpenCV_LIBS})

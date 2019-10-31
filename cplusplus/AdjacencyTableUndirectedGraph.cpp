@@ -198,8 +198,7 @@ void AdjacencyTableUndirectedGraph::MiniSpanTree_Kruskal(GraphAdjList G) {
     int i, j, k, n, m;
     EdgeNode *e;
     std::array<Edge, MAXEDGE> edges = {};
-    // 保存最小生成树，数组下标表示一个顶点，赋值表示另一个顶点
-    int parent[MAXVEX] = {};
+    DisjointSet disjointSet(G.numVertexes);
 
     // 将边集赋值给edges
     k = 0;
@@ -226,11 +225,9 @@ void AdjacencyTableUndirectedGraph::MiniSpanTree_Kruskal(GraphAdjList G) {
     int weight = 0;
     // 升序遍历
     for (i = 0; i < G.numEdges; i++) {
-        n = Find(parent, edges[i].begin);
-        m = Find(parent, edges[i].end);
-        // 判断两个分量是否同属一个
-        if (n != m) {
-            parent[n] = m;
+        n = disjointSet.find(edges[i].begin);
+        m = disjointSet.find(edges[i].end);
+        if (disjointSet.join(n, m)) {
             printf("(%d, %d) %d\n", edges[i].begin, edges[i].end, edges[i].weight);
             weight += edges[i].weight;
         }
@@ -240,13 +237,4 @@ void AdjacencyTableUndirectedGraph::MiniSpanTree_Kruskal(GraphAdjList G) {
 
 bool AdjacencyTableUndirectedGraph::less_second(Edge x, Edge y) {
     return x.weight < y.weight;
-}
-
-int AdjacencyTableUndirectedGraph::Find(int *parent, int f) {
-    // 遍历分量
-    while (parent[f] > 0) {
-        f = parent[f];
-    }
-
-    return f;
 }
