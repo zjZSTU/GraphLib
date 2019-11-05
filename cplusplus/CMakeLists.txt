@@ -8,14 +8,5 @@ find_package(OpenCV REQUIRED)
 MESSAGE("OpenCV version: ${OpenCV_VERSION}")
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(cplusplus
-        samples/graph/graph.cpp
-        src/graph.h
-        src/common_iostream.h
-        src/AdjacencyMatrixUndirectedGraph.cpp
-        src/AdjacencyMatrixUndirectedGraph.h
-        src/AdjacencyTableUndirectedGraph.cpp
-        src/AdjacencyTableUndirectedGraph.h
-        src/DisjointSet.cpp
-        src/DisjointSet.h)
+add_executable(cplusplus samples/graphsegmentation/segmentation.cpp src/GraphSegmentationImpl.cpp src/GraphSegmentationImpl.h src/PointSet.cpp src/PointSet.h)
 target_link_libraries(cplusplus ${OpenCV_LIBS})
