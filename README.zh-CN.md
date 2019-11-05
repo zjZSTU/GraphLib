@@ -4,7 +4,7 @@
 
 [![](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-图算法实现，包括存储结构、深度/广度优先遍历、最小生成树创建，基于不同语言（`pyhon/c++`）实现
+>图相关算法实现
 
 ## 内容列表
 
@@ -27,19 +27,8 @@
 
 ### 实现
 
-**邻接矩阵**存储结构实现功能（`c++`实现）如下：
-
-1. 广度优先遍历(`BFS`)
-2. 深度优先遍历(`DFS`)
-3. `Prim`算法
-4. `Kruskal`算法
-
-**邻接表**存储结构实现功能（`c++`实现）如下：
-
-1. 广度优先遍历(`BFS`)
-2. 深度优先遍历(`DFS`)
-3. `Prim`算法
-4. `Kruskal`算法
+* 图数据结构的测试：[graph](https://github.com/zjZSTU/GraphLib/tree/master/cplusplus/samples/graph)
+* 基于图的图像分割：[graphsegmentation](https://github.com/zjZSTU/GraphLib/tree/master/cplusplus/samples/graphsegmentation)
 
 ## 版本更新日志
 
@@ -47,7 +36,6 @@
 
 # 待办事项
 
-* `C++11`标准实现
 * 最短路径算法实现
 * 拓扑排序算法实现
 
@@ -64,6 +52,7 @@
 参考以下资源
 
 * 《大话数据结构》
+* [OpenCV](https://opencv.org/)
 
 ## 参与贡献方式
 

@@ -8,8 +8,6 @@
 
 > Graph algorithm implementation
 
-Graph algorithm implementation, including storage structure, depth/breadth first traversal, minimum spanning tree creation, based on different languages (pyhon/c++).
-
 ## Table of Contents
 
 - [Usage](#usage)
@@ -31,19 +29,8 @@ This Repo requires the following preparatory knowledge
 
 ### Realization
 
-The **adjacency matrix** storage structure implementation function (`c++` implementation) is as follows:
-
-1. breadth-first search(BFS)
-2. depth-first search(DFS)
-3. Prim algorithm
-4. Kruskal algorithm
-
-The **adjacency table** storage structure implementation function (`c++` implementation) is as follows:
-
-1. breadth-first search(BFS)
-2. depth-first search(DFS)
-3. Prim algorithm
-4. Kruskal algorithm
+* [graph](https://github.com/zjZSTU/GraphLib/tree/master/cplusplus/samples/graph)
+* [graphsegmentation](https://github.com/zjZSTU/GraphLib/tree/master/cplusplus/samples/graphsegmentation)
 
 ## CHANGELOG
 
@@ -51,7 +38,6 @@ see the [CHANGELOG](./CHANGELOG.md) on this repository.
 
 # TODO
 
-* Implementation of C++11 standard
 * Realization of Shortest Path Algorithms
 * Implementation of Topological Sorting
 
@@ -68,6 +54,7 @@ Thank you for your participation.
 Refer to the following resources
 
 * 《大话数据结构》
+* [OpenCV](https://opencv.org/)
 
 ## Contributing
 
