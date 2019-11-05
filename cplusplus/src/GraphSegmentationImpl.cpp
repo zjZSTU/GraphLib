@@ -14,6 +14,19 @@ void GraphSegmentationImpl::filter(const Mat &img, Mat &img_filtered) {
     GaussianBlur(img_converted, img_filtered, Size(0, 0), sigma, sigma);
 }
 
+//float diff(const float *p, const float *p2, const int &nb_channels, int j, int j2) {
+//    float tmp_total = 0;
+//
+//    for (int channel = 0; channel < nb_channels; channel++) {
+//        tmp_total += pow(p[j * nb_channels + channel] - p2[j2 * nb_channels + channel], 2);
+//    }
+//
+//    float diff = 0;
+//    diff = sqrt(tmp_total);
+//
+//    return diff;
+//}
+
 void GraphSegmentationImpl::buildGraph(Edge **edges, int &nb_edges, const Mat &img_filtered) {
 
     *edges = new Edge[img_filtered.rows * img_filtered.cols * 4];
@@ -23,9 +36,44 @@ void GraphSegmentationImpl::buildGraph(Edge **edges, int &nb_edges, const Mat &i
     int nb_channels = img_filtered.channels();
 
     for (int i = 0; i < (int) img_filtered.rows; i++) {
-        const float *p = img_filtered.ptr<float>(i);
-
+        auto *p = img_filtered.ptr<float>(i);
         for (int j = 0; j < (int) img_filtered.cols; j++) {
+//            if (j < (img_filtered.cols - 1)) {
+//                (*edges)[nb_edges].from = i * img_filtered.cols + j;
+//                (*edges)[nb_edges].to = i * img_filtered.cols + (j + 1);
+//
+//                auto *p2 = img_filtered.ptr<float>(i);
+//                (*edges)[nb_edges].weight = diff(p, p2, nb_channels, j, j + 1);
+//                nb_edges++;
+//            }
+//
+//            if (i < (img_filtered.rows - 1)) {
+//                (*edges)[nb_edges].from = i * img_filtered.cols + j;
+//                (*edges)[nb_edges].to = (i + 1) * img_filtered.cols + j;
+//
+//                auto *p2 = img_filtered.ptr<float>(i + 1);
+//                (*edges)[nb_edges].weight = diff(p, p2, nb_channels, j, j);
+//                nb_edges++;
+//            }
+//
+//            if ((i < (img_filtered.rows - 1)) && (j < (img_filtered.cols - 1))) {
+//                (*edges)[nb_edges].from = i * img_filtered.cols + j;
+//                (*edges)[nb_edges].to = (i + 1) * img_filtered.cols + (j + 1);
+//
+//                auto *p2 = img_filtered.ptr<float>(i + 1);
+//                (*edges)[nb_edges].weight = diff(p, p2, nb_channels, j, j + 1);
+//                nb_edges++;
+//            }
+//
+//            if ((i > 0) && (j < (img_filtered.cols - 1))) {
+//                (*edges)[nb_edges].from = i * img_filtered.cols + j;
+//                (*edges)[nb_edges].to = (i - 1) * img_filtered.cols + (j + 1);
+//
+//                auto *p2 = img_filtered.ptr<float>(i - 1);
+//                (*edges)[nb_edges].weight = diff(p, p2, nb_channels, j, j + 1);
+//                nb_edges++;
+//            }
+
 
             //Take the right, left, top and down pixel
             for (int delta = -1; delta <= 1; delta += 2) {
