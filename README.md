@@ -1,6 +1,6 @@
 #  GraphLib
 
-![](./test_graph.png)
+![](./graph.svg)
 
 [![](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
