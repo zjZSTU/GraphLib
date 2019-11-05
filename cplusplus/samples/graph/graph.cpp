@@ -1,6 +1,7 @@
 
-#include "AdjacencyTableUndirectedGraph.h"
-#include "AdjacencyMatrixUndirectedGraph.h"
+#include "../../src/graph.h"
+#include "../../src/AdjacencyTableUndirectedGraph.h"
+#include "../../src/AdjacencyMatrixUndirectedGraph.h"
 #include <memory>
 #include <cstring>
 
