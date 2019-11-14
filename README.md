@@ -47,10 +47,6 @@ see the [CHANGELOG](./CHANGELOG.md) on this repository.
 
 ## Thanks
 
-Thank you for your participation.
-
-[![](https://avatars3.githubusercontent.com/u/13742735?s=460&v=4)](https://github.com/zjZSTU)
-
 Refer to the following resources
 
 * 《大话数据结构》
