@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <opencv2/opencv.hpp>
-#include "../../src/GraphSegmentationImpl.h"
+#include "../../src/segmentation/GraphSegmentationImpl.h"
 
 using namespace std;
 using namespace cv;

@@ -8,5 +8,6 @@ find_package(OpenCV REQUIRED)
 MESSAGE("OpenCV version: ${OpenCV_VERSION}")
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(cplusplus samples/graphsegmentation/segmentation.cpp src/GraphSegmentationImpl.cpp src/GraphSegmentationImpl.h src/PointSet.cpp src/PointSet.h)
+add_executable(cplusplus samples/graphsegmentation/segmentation.cpp src/segmentation/GraphSegmentationImpl.cpp
+        src/segmentation/GraphSegmentationImpl.h src/segmentation/PointSet.cpp src/segmentation/PointSet.h)
 target_link_libraries(cplusplus ${OpenCV_LIBS})
