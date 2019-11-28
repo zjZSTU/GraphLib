@@ -1,16 +1,16 @@
 //
-// Created by zj on 19-11-7.
+// Created by zj on 19-11-23.
 //
 
-
+#include "opencv2/ximgproc/segmentation.hpp"
 #include "opencv2/highgui.hpp"
 #include "opencv2/core.hpp"
 #include "opencv2/imgproc.hpp"
-#include "../../src/segmentation/SelectiveSearchSegmentation.h"
 #include <iostream>
 #include <ctime>
 
 using namespace cv;
+using namespace cv::ximgproc::segmentation;
 
 static void help() {
     std::cout << std::endl <<
@@ -25,8 +25,6 @@ static void help() {
               "./selectivesearchsegmentation_demo input_image (single|fast|quality)" << std::endl <<
               "Use a to display less rects, d to display more rects, q to quit" << std::endl;
 }
-
-
 
 
 int main(int argc, char **argv) {
