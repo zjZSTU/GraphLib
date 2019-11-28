@@ -7,8 +7,9 @@
 
 #include <iostream>
 #include <cstring>
-#include <opencv2/opencv.hpp>
+#include <opencv2/core/mat.hpp>
 #include "PointSet.h"
+#include "GraphSegmentation.h"
 
 using namespace cv;
 
@@ -23,7 +24,7 @@ public:
     }
 };
 
-class GraphSegmentationImpl {
+class GraphSegmentationImpl : public GraphSegmentation {
 public:
     GraphSegmentationImpl() {
         sigma = 0.5;
@@ -34,31 +35,31 @@ public:
 
     ~GraphSegmentationImpl() = default;
 
-     void processImage(InputArray src, OutputArray dst);
+    void processImage(InputArray src, OutputArray dst);
 
-     void setSigma(double sigma_) {
+    void setSigma(double sigma_) {
         if (sigma_ <= 0) { sigma_ = 0.001; }
         sigma = sigma_;
     }
 
-     double getSigma() { return sigma; }
+    double getSigma() { return sigma; }
 
-     void setK(float k_) { k = k_; }
+    void setK(float k_) { k = k_; }
 
-     float getK() { return k; }
+    float getK() { return k; }
 
-     void setMinSize(int min_size_) { min_size = min_size_; }
+    void setMinSize(int min_size_) { min_size = min_size_; }
 
-     int getMinSize() { return min_size; }
+    int getMinSize() { return min_size; }
 
-     void write(FileStorage &fs) const {
+    void write(FileStorage &fs) const {
         fs << "name" << name_
            << "sigma" << sigma
            << "k" << k
            << "min_size" << (int) min_size;
     }
 
-     void read(const FileNode &fn) {
+    void read(const FileNode &fn) {
         CV_Assert((String) fn["name"] == name_);
 
         sigma = (double) fn["sigma"];

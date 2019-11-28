@@ -14,6 +14,12 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 include_directories("/home/zj/opencv/opencv-4.1.0/opencv/modules")
 include_directories("/home/zj/opencv/opencv-4.1.0/opencv_contrib/modules")
 
-add_executable(cplusplus samples/graphsegmentation/segmentation.cpp src/segmentation/GraphSegmentationImpl.cpp
-        src/segmentation/GraphSegmentationImpl.h src/segmentation/PointSet.cpp src/segmentation/PointSet.h)
+add_executable(cplusplus
+        samples/graphsegmentation/graphsegmentation.cpp
+        src/segmentation/GraphSegmentation.cpp
+        src/segmentation/GraphSegmentation.h
+        src/segmentation/GraphSegmentationImpl.cpp
+        src/segmentation/GraphSegmentationImpl.h
+        src/segmentation/PointSet.cpp
+        src/segmentation/PointSet.h)
 target_link_libraries(cplusplus ${OpenCV_LIBS})

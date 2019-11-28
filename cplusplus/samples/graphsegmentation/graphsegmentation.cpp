@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <opencv2/opencv.hpp>
-#include "../../src/segmentation/GraphSegmentationImpl.h"
+#include "../../src/segmentation/GraphSegmentation.h"
 
 using namespace std;
 using namespace cv;
@@ -49,24 +49,13 @@ Scalar color_mapping(int segment_id) {
     return hsv_to_rgb(Scalar(fmod(base, 1.2), 0.95, 0.80));
 }
 
-shared_ptr<GraphSegmentationImpl> createGraphSegmentation(double sigma = 0.5, float k = 300, int min_size = 100) {
-
-    shared_ptr<GraphSegmentationImpl> graphseg = make_shared<GraphSegmentationImpl>();
-
-    graphseg->setSigma(sigma);
-    graphseg->setK(k);
-    graphseg->setMinSize(min_size);
-
-    return graphseg;
-}
-
 int main(int argc, char **argv) {
     if (argc < 2 || argc > 6) {
         help();
         return -1;
     }
 
-    shared_ptr<GraphSegmentationImpl> gs = createGraphSegmentation();
+    shared_ptr<GraphSegmentation> gs = createGraphSegmentation();
     if (argc > 3)
         gs->setSigma(atof(argv[3]));
     if (argc > 4)
