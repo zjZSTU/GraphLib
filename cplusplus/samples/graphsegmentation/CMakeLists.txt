@@ -3,10 +3,16 @@ project(cplusplus)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(CMAKE_PREFIX_PATH /home/zj/opencv/opencv-4.0.1/install)
+set(CMAKE_PREFIX_PATH /home/zj/opencv/opencv-4.1.0/install)
 find_package(OpenCV REQUIRED)
+
 MESSAGE("OpenCV version: ${OpenCV_VERSION}")
+MESSAGE("OpenCV OpenCV_INCLUDE_DIRS: ${OpenCV_INCLUDE_DIRS}")
+MESSAGE("OpenCV OpenCV_LIBS: ${OpenCV_LIBS}")
+
 include_directories(${OpenCV_INCLUDE_DIRS})
+include_directories("/home/zj/opencv/opencv-4.1.0/opencv/modules")
+include_directories("/home/zj/opencv/opencv-4.1.0/opencv_contrib/modules")
 
 add_executable(cplusplus samples/graphsegmentation/segmentation.cpp src/segmentation/GraphSegmentationImpl.cpp
         src/segmentation/GraphSegmentationImpl.h src/segmentation/PointSet.cpp src/segmentation/PointSet.h)
