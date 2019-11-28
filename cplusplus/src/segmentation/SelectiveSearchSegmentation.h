@@ -83,7 +83,7 @@ std::shared_ptr<SelectiveSearchSegmentation> createSelectiveSearchSegmentation()
 
 // 辅助类
 
-// Represent a regsion
+// Represent a region
 class Region {
 public:
     int id;
